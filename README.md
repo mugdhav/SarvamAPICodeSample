@@ -1,8 +1,10 @@
-Created for the Pie & AI: Exploring Indian AI event.
-Contains a Jupyter Notebook with Python program that uses Sarvam API to translate user input text from one Indian language to another.
 # SarvamAI Indian Language Translator
 
 A Python application for translating text between Indian languages using the SarvamAI API, with intelligent detection of language, gender, and formality.
+
+**Available in two formats:**
+- **`sarvam_translator.py`** - Standalone Python script for local development
+- **`sarvam_translator.ipynb`** - Jupyter notebook optimized for Google Colab
 
 ## Features
 
@@ -42,6 +44,8 @@ The translator supports 23 Indian languages with their respective language codes
 
 ## Installation
 
+### For Python Script (`sarvam_translator.py`)
+
 1. **Install dependencies**:
    ```bash
    pip install sarvamai python-dotenv
@@ -58,17 +62,32 @@ The translator supports 23 Indian languages with their respective language codes
    python sarvam_translator.py
    ```
 
+### For Jupyter Notebook (`sarvam_translator.ipynb`)
+
+1. **Google Colab Setup**:
+   - Upload the notebook to Google Colab
+   - Run the first cell to install dependencies: `pip install sarvamai`
+   - Add your SarvamAI API key as a Colab secret named `sarvam`
+
+2. **Local Jupyter Setup**:
+   - Install Jupyter: `pip install jupyter sarvamai`
+   - Modify the API key retrieval to use your preferred method (environment variables, direct input, etc.)
+   - Run: `jupyter notebook sarvam_translator.ipynb`
+
 ## Usage
 
 ### Interactive Mode
 
-Run the script to enter interactive mode:
-
+**Python Script:**
 ```bash
 python sarvam_translator.py
 ```
 
-The application will:
+**Jupyter Notebook:**
+- Run all cells in the notebook, or
+- Run individual cells as needed for interactive exploration
+
+Both versions will:
 1. Display all supported languages and their codes
 2. Prompt you to enter text for translation
 3. Automatically detect language, gender, and formality
@@ -187,12 +206,19 @@ print(result.translated_text)
 
 ## Configuration
 
+### Python Script
 The application uses environment variables for configuration:
 - `SARVAM_API_KEY`: Your SarvamAI API subscription key (required)
 
+### Jupyter Notebook
+**Google Colab:** Uses Colab secrets - add your API key as a secret named `sarvam`
+**Local Jupyter:** Modify the notebook to use your preferred API key storage method
+
 ## Notes
 
+- Both versions use identical core functionality and the same `IndianLanguageTranslator` class
 - The application uses SarvamAI's `sarvam-translate:v1` model
 - Numerals are formatted in native script format
 - Preprocessing is disabled for more direct translations
 - The CLI interface provides confirmation prompts for detected parameters to ensure accuracy
+- **Key difference:** The notebook version uses Google Colab's `userdata.get()` for API key retrieval instead of environment variables
